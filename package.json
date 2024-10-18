@@ -1,0 +1,12 @@
+{
+  "name": "react-geocoder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Raghunath Prabhakar",
+  "license": "MIT",
+  "description": "A lightweight wrapper around the Google geocoding and places autocomplete APIs"
+}

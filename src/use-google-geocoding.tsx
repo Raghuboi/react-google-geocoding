@@ -1,0 +1,3 @@
+const useGoogleGeocoding = () => {};
+
+export { useGoogleGeocoding };

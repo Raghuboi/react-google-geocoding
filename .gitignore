@@ -1,6 +1,8 @@
 # Node Modules
 node_modules
 
+playground
+
 # Build directories
 dist/
 build/

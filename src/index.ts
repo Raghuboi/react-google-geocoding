@@ -1,1 +1,1 @@
-export * from "./use-places-predictions";
+export * from "./use-place-predictions";

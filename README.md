@@ -1,6 +1,6 @@
-# react-google-geocoding
+# react-google-hooks
 
-`react-google-geocoding` is a React library designed to simplify the integration of the Google Places and Geocoding APIs.
+`react-google-hooks` is a React library designed to simplify the integration of the Google Places and Geocoding APIs.
 It provides custom hooks for fetching place predictions and geocoding information with support for loading and error handling.
 
 ## Installation
@@ -8,7 +8,7 @@ It provides custom hooks for fetching place predictions and geocoding informatio
 Install the library using npm:
 
 ```bash
-npm install react-google-geocoding
+npm install react-google-hooks
 ```
 
 ## Prerequisites
@@ -18,7 +18,7 @@ Include the Google Maps API script in your `index.html` file:
 
 ```html
 <script
-  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"
+  src="https://maps.googleapis.com/maps/api/js?key=<YOUR_API_KEY>&libraries=places"
   async
   defer
 ></script>
@@ -30,21 +30,29 @@ Replace `YOUR_API_KEY` with your actual API key.
 
 The library currently supports the following hooks:
 
-1. **usePlacesAutocomplete** - Fetches place predictions based on a query.
+1. **usePlacesPredictions** - Fetches place predictions based on a query.
 
-## `usePlacesAutocomplete` Hook
+## `usePlacesPredictions` Hook
 
-The `usePlacesAutocomplete` hook allows you to get autocomplete predictions based on user input.
+The `usePlacesPredictions` hook allows you to get autocomplete predictions based on user input.
 It's ideal for enhancing forms or search inputs with location suggestions.
 
 ### Parameters
 
 The hook accepts an object with the following properties:
 
-| Parameter    | Type   | Required | Default | Description                                                     |
-| ------------ | ------ | -------- | ------- | --------------------------------------------------------------- |
-| `query`      | string | Yes      | N/A     | The search query for fetching predictions.                      |
-| `debounceMs` | number | No       | 300     | Debounce time (in milliseconds) before sending the API request. |
+| Parameter              | Type                                                                                                | Required | Default                       | Description                                                                                                                                          |
+| ---------------------- | --------------------------------------------------------------------------------------------------- | -------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `input`                | string                                                                                              | Yes      | N/A                           | The text string on which to search for predictions.                                                                                                  |
+| `inputOffset`          | number                                                                                              | No       | N/A                           | A zero-based Unicode character offset of `input` indicating the cursor position. Defaults to the length of the input if not specified.               |
+| `language`             | string                                                                                              | No       | Browser's language preference | The language in which to return results. Results may be mixed if input language differs from specified language or translation isn't available.      |
+| `includedPrimaryTypes` | PlaceType[]                                                                                         | No       | All Place types               | An array of up to 5 primary place types (e.g., ['restaurant']). If no types are specified, all Place types are returned.                             |
+| `includedRegionCodes`  | RegionCode[]                                                                                        | No       | N/A                           | An array of up to 15 CLDR two-character region codes to filter results. If combined with `locationRestriction`, results are within the intersection. |
+| `locationBias`         | google.maps.LatLng, google.maps.LatLngLiteral, google.maps.LatLngBounds, google.maps.Circle, string | No       | IP-based                      | Bias results to a specific location. At most one of `locationBias` or `locationRestriction` should be set.                                           |
+| `locationRestriction`  | google.maps.LatLngBounds, google.maps.LatLngBoundsLiteral                                           | No       | IP-based                      | Restrict results to a specific location. At most one of `locationBias` or `locationRestriction` should be set.                                       |
+| `origin`               | google.maps.LatLng, google.maps.LatLngLiteral                                                       | No       | N/A                           | The origin point for calculating geodesic distance to the destination. If omitted, geodesic distance will not be returned.                           |
+| `region`               | RegionCode                                                                                          | No       | N/A                           | A CLDR two-character region code affecting address formatting, result ranking, and returned results. Does not restrict to the specified region.      |
+| `sessionToken`         | google.maps.places.AutocompleteSessionToken                                                         | No       | N/A                           | A token identifying an Autocomplete session for billing purposes. Must generate a new token for each session to avoid incorrect billing.             |
 
 ### Returns
 
@@ -66,7 +74,11 @@ import { usePlacesAutocomplete } from "react-google-geocoding";
 
 const PlacesAutocompleteExample = () => {
   const [query, setQuery] = useState("");
-  const { predictions, loading, error } = usePlacesAutocomplete({ query });
+  const { predictions, loading, error } = usePlacePredictions({
+    input: "Shimla",
+    language: "en",
+    region: "US",
+  });
 
   return (
     <div>
@@ -89,24 +101,6 @@ const PlacesAutocompleteExample = () => {
 
 export default PlacesAutocompleteExample;
 ```
-
-### Customizing Debounce Time
-
-You can customize the debounce time to optimize the API calls. For example:
-
-```jsx
-const { predictions, loading, error } = usePlacesAutocomplete({
-  query,
-  debounceMs: 500,
-});
-```
-
-This will delay the API call by 500 milliseconds after the user stops typing.
-
-### Error Handling
-
-If the autocomplete service fails to initialize or if there is an issue fetching predictions,
-the hook will return an error message. You can display this error in your component to provide feedback.
 
 ## Notes
 
@@ -135,7 +129,7 @@ We appreciate your contributions and feedback to make this library better.
 
 ## Authors
 
-- Raghunath Prabhakar
+- Raghunath Prabhakar (@raghuboi)
 
 ## Links
 

@@ -1,3 +1,0 @@
-const useGoogleGeocoding = () => {};
-
-export { useGoogleGeocoding };

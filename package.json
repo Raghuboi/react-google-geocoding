@@ -1,6 +1,6 @@
 {
   "name": "react-google-geocoding",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -19,13 +19,12 @@
   "author": "Raghunath Prabhakar",
   "license": "MIT",
   "description": "A lightweight wrapper around the Google geocoding and places autocomplete APIs",
-  "dependencies": {
-    "react-dom": "^18.3.1"
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.1",
+    "@types/google.maps": "^3.58.1",
+    "@types/react": "^18.3.11",
     "react": "^18.3.1",
     "rollup": "^2.79.2",
     "rollup-plugin-terser": "^7.0.2",

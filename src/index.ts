@@ -1,1 +1,1 @@
-export { useGoogleGeocoding } from "./use-google-geocoding";
+export * from "./use-places-predictions";

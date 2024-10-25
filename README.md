@@ -68,7 +68,7 @@ An object containing the following properties:
 
 ### Example Usage
 
-Below is a basic implementation example using the `usePlacesAutocomplete` hook:
+Below is a basic implementation example using the `usePlacesPredictions` hook:
 
 ```jsx
 import React, { useState } from "react";

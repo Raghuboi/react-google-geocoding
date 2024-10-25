@@ -15,6 +15,15 @@ export default {
       format: "esm",
     },
   ],
-  plugins: [resolve(), commonjs(), typescript(), terser()],
+  plugins: [
+    resolve(),
+    commonjs(),
+    typescript({
+      jsx: "react",
+      include: ["**/*.ts", "**/*.tsx"],
+    }),
+
+    terser(),
+  ],
   external: ["react", "react-dom"],
 };

@@ -1,6 +1,6 @@
 {
   "name": "react-google-hooks",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
   ],
   "author": "Raghunath Prabhakar",
   "license": "MIT",
-  "description": "A lightweight wrapper around Google Places Autocomplete and Geocoding APIs, with plans to support more Google services in the future.",
+  "description": "A lightweight wrapper around Google Places Autocomplete and Directions APIs.",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",

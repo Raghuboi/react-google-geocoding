@@ -30,6 +30,7 @@ Replace `YOUR_API_KEY` with your actual API key.
 The library currently supports the following hooks:
 
 1. **usePlacePredictions** - Fetches place predictions based on a query.
+2. **useDirections** - A service for computing directions between two or more places.
 
 ## `usePlacePredictions` Hook
 

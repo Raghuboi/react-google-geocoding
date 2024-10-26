@@ -1,8 +1,7 @@
 "use client";
-import React, { useMemo } from "react";
+import React from "react";
 import { Language, RegionCode, PlaceType } from "./types";
 import { useDebounceValue } from "./utils/use-debounce-value";
-import debounce from "lodash.debounce";
 
 interface UsePlacePredictionsResult {
   predictions: google.maps.places.AutocompletePrediction[];
@@ -93,7 +92,6 @@ const usePlacePredictions = ({
     google.maps.places.AutocompletePrediction[]
   >([]);
   const [isLoading, setLoading] = React.useState(false);
-  // const [error, setError] = React.useState<string | null>(null);
   const [status, setStatus] =
     React.useState<google.maps.places.PlacesServiceStatus | null>(null);
   const [debounced] = useDebounceValue(input, debounceMs);
@@ -137,8 +135,8 @@ const usePlacePredictions = ({
     () => {
       autocompleteService.current = null;
       setLoading(false);
-      // setError(null);
       setStatus(null);
+      setPredictions([]);
     };
   }, [debounced]);
 
